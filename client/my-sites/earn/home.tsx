@@ -210,7 +210,7 @@ const Home: FunctionComponent< ConnectedProps > = ( {
 					},
 			  };
 		const title = hasConnectedAccount
-			? translate( 'Manage Your Premium Content' )
+			? translate( 'Manage your premium content' )
 			: translate( 'Collect payments for content' );
 		const body = hasConnectedAccount
 			? translate(
