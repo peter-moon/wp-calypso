@@ -636,7 +636,7 @@
 
 	.logged-out-form label,
 	.login__form-userdata label {
-		font-size: 16px;
+		font-size: $font-body;
 		font-weight: normal;
 	}
 
@@ -667,7 +667,7 @@
 		a,
 		button {
 			border: none;
-			font-size: 16px;
+			font-size: $font-body;
 			font-weight: normal;
 			line-height: 3em;
 			text-align: center;

@@ -80,7 +80,7 @@
 					font-size: 20px;
 				}
 				&.mobile-xxl {
-					font-size: 16px;
+					font-size: $font-body;
 				}
 			}
 
@@ -95,13 +95,13 @@
 					font-size: 20px;
 				}
 				&.desktop-xxl {
-					font-size: 16px;
+					font-size: $font-body;
 				}
 			}
 		}
 
 		> .domain-status__icon {
-			font-size: 16px;
+			font-size: $font-body;
 			display: flex;
 			align-items: center;
 			border-bottom: 0;
