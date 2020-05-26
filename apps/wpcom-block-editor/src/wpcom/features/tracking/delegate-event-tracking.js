@@ -8,6 +8,7 @@ import debugFactory from 'debug';
  */
 import wpcomBlockEditorCloseClick from './wpcom-block-editor-close-click';
 import wpcomInserterInlineSearchTerm from './wpcom-inserter-inline-search-term';
+import wpcomBlockRecurringPayments from './wpcom-block-recurring-payments';
 
 // Debugger.
 const debug = debugFactory( 'wpcom-block-editor:tracking' );
@@ -18,7 +19,11 @@ const debug = debugFactory( 'wpcom-block-editor:tracking' );
  *
  * @type {Array}
  */
-const EVENTS_MAPPING = [ wpcomBlockEditorCloseClick(), wpcomInserterInlineSearchTerm() ];
+const EVENTS_MAPPING = [
+	wpcomBlockEditorCloseClick(),
+	wpcomInserterInlineSearchTerm(),
+	wpcomBlockRecurringPayments(),
+];
 
 /**
  * Checks the event for a selector which matches
