@@ -1,7 +1,7 @@
 /**
- * WordPress dependencies
+ * External dependencies
  */
-import { Button, Dashicon } from '@wordpress/components';
+import { Button, Dashicon } from '@wordpress/icons';
 import { Warning } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
@@ -10,11 +10,11 @@ import { withDispatch } from '@wordpress/data';
 /**
  * @typedef { import('react').MouseEvent<HTMLElement> } MouseEvent
  *
- * @typedef { Object } Props
+ * @typedef {object} Props
  * @property { (event: MouseEvent) => void } autosaveAndRedirect
  * @property { string } stripeConnectUrl
  * @property { () => void } onClick
- * @param { Props } props
+ * @param { Props } props Properties passed to component
  */
 export const StripeNudge = ( { autosaveAndRedirect, stripeConnectUrl } ) => (
 	<Warning
@@ -27,21 +27,21 @@ export const StripeNudge = ( { autosaveAndRedirect, stripeConnectUrl } ) => (
 					onClick={ autosaveAndRedirect }
 					target="_top"
 					isDefault
-					className="premium-content-block-nudge__button"
+					className="premium-content-block-nudge__button stripe-nudge__button"
 				>
 					{ __( 'Connect', 'premium-content' ) }
 				</Button>,
 			]
 		}
-		className="premium-content-block-nudge"
+		className="premium-content-block-nudge stripe-nudge"
 	>
-		<span className="premium-content-block-nudge__info">
+		<span className="premium-content-block-nudge__info stripe-nudge__info">
 			{ <Dashicon icon="star-filled" /> }
-			<span className="premium-content-block-nudge__text-container">
-				<span className="premium-content-block-nudge__title">
+			<span className="premium-content-block-nudge__text-container stripe-nudge__text-container">
+				<span className="premium-content-block-nudge__title stripe-nudge__title">
 					{ __( 'Connect to Stripe to use this block on your site', 'premium-content' ) }
 				</span>
-				<span className="premium-content-block-nudge__message">
+				<span className="premium-content-block-nudge__message stripe-nudge__message">
 					{ __(
 						'This block will be hidden from your visitors until you connect to Stripe.',
 						'premium-content'
@@ -62,12 +62,14 @@ export default compose( [
 	withDispatch(
 		/**
 		 * Complicated to define the valid type with JSDoc
+		 *
+		 * @param dispatch
 		 */
 		// @ts-ignore
 		( dispatch, { stripeConnectUrl } ) => ( {
 			/**
 			 * @param { MouseEvent } event
-			 * @return { Promise<void> } When completed
+			 * @returns { Promise<void> } When completed
 			 */
 			autosaveAndRedirect: async ( event ) => {
 				event.preventDefault(); // Don't follow the href before autosaving
