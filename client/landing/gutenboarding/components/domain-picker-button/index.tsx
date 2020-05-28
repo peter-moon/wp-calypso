@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, { createRef, FunctionComponent, useState, useEffect } from 'react';
+import React, { createRef, FunctionComponent, useState } from 'react';
 import { Button } from '@wordpress/components';
 import { Icon, chevronDown } from '@wordpress/icons';
 import { useDispatch, useSelect } from '@wordpress/data';
@@ -15,11 +15,6 @@ import classnames from 'classnames';
 import DomainPickerPopover from '../domain-picker-popover';
 import DomainPickerModal from '../domain-picker-modal';
 import { FLOW_ID } from '../../constants';
-import {
-	recordTrainTracksEvent,
-	getNewRailcarId,
-	RecordTrainTracksEventProps,
-} from '../../lib/analytics';
 import { STORE_KEY } from '../../stores/onboard';
 import { useDomainSuggestions } from '../../hooks/use-domain-suggestions';
 import { DOMAIN_SUGGESTIONS_STORE } from '../../stores/domain-suggestions';
@@ -55,15 +50,6 @@ const DomainPickerButton: FunctionComponent< Props > = ( {
 		select( DOMAIN_SUGGESTIONS_STORE ).getCategories()
 	);
 
-	const [ railcarId, setRailcarId ] = useState< string | undefined >();
-
-	useEffect( () => {
-		// Only generate a railcarId when the domain suggestions change and are not empty.
-		if ( domainSuggestions ) {
-			setRailcarId( getNewRailcarId() );
-		}
-	}, [ domainSuggestions, setRailcarId ] );
-
 	const { domainSearch, domainCategory } = useSelect( ( select ) =>
 		select( STORE_KEY ).getState()
 	);
@@ -87,10 +73,6 @@ const DomainPickerButton: FunctionComponent< Props > = ( {
 	const handleMoreOptions = () => {
 		setDomainPopoverVisibility( false );
 		setDomainModalVisibility( true );
-	};
-
-	const recordAnalytics = ( event: RecordTrainTracksEventProps ) => {
-		recordTrainTracksEvent( `/${ FLOW_ID }/domain-popover`, event );
 	};
 
 	return (
@@ -125,8 +107,6 @@ const DomainPickerButton: FunctionComponent< Props > = ( {
 				onDomainSelect={ onDomainSelect }
 				onMoreOptions={ handleMoreOptions }
 				onClose={ handlePopoverClose }
-				recordAnalytics={ recordAnalytics }
-				railcarId={ railcarId }
 				domainSuggestionVendor={ DOMAIN_SUGGESTION_VENDOR }
 			/>
 			<DomainPickerModal
@@ -143,8 +123,6 @@ const DomainPickerButton: FunctionComponent< Props > = ( {
 				currentDomain={ currentDomain }
 				onDomainSelect={ onDomainSelect }
 				onClose={ handleModalClose }
-				recordAnalytics={ recordAnalytics }
-				railcarId={ railcarId }
 				domainSuggestionVendor={ DOMAIN_SUGGESTION_VENDOR }
 			/>
 		</>
