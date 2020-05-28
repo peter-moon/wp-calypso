@@ -33,5 +33,7 @@ declare module '@wordpress/data' {
 }
 
 export type State = import('./reducer').State;
+export type Plan = import('./types').Plan;
+
 export { STORE_KEY };
 export { plansPaths };

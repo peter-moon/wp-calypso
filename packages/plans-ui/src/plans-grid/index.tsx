@@ -12,8 +12,8 @@ import { Plans } from '@automattic/data-stores';
 /**
  * Internal dependencies
  */
-import { Title, SubTitle } from '../../titles';
-import ActionButtons from '../../action-buttons';
+import { Title, SubTitle } from '../titles/';
+import ActionButtons from '../action-buttons';
 import PlansTable from '../plans-table';
 import PlansDetails from '../plans-details';
 
@@ -21,7 +21,6 @@ import PlansDetails from '../plans-details';
  * Style dependencies
  */
 import './style.scss';
-import { useSelectedPlan } from 'landing/gutenboarding/hooks/use-selected-plan';
 
 const PLANS_STORE = Plans.STORE_KEY;
 
@@ -31,12 +30,15 @@ const isMobile = window.navigator.userAgent.indexOf( 'Mobi' ) > -1;
 export interface Props {
 	confirmButton: React.ReactElement;
 	cancelButton?: React.ReactElement;
+	currentPlan: Plans.Plan;
 }
 
-const PlansGrid: React.FunctionComponent< Props > = ( { confirmButton, cancelButton } ) => {
+const PlansGrid: React.FunctionComponent< Props > = ( {
+	confirmButton,
+	cancelButton,
+	currentPlan,
+} ) => {
 	const { __ } = useI18n();
-
-	const selectedPlan = useSelectedPlan();
 
 	const { setPlan } = useDispatch( PLANS_STORE );
 
@@ -68,7 +70,7 @@ const PlansGrid: React.FunctionComponent< Props > = ( { confirmButton, cancelBut
 			<div className="plans-grid__table">
 				<div className="plans-grid__table-container">
 					<PlansTable
-						selectedPlanSlug={ selectedPlan?.storeSlug ?? '' }
+						selectedPlanSlug={ currentPlan?.storeSlug ?? '' }
 						onPlanSelect={ setPlan }
 					></PlansTable>
 				</div>
