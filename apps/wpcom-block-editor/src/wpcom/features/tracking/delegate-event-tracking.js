@@ -8,7 +8,7 @@ import debugFactory from 'debug';
  */
 import wpcomBlockEditorCloseClick from './wpcom-block-editor-close-click';
 import wpcomInserterInlineSearchTerm from './wpcom-inserter-inline-search-term';
-import wpcomBlockRecurringPayments from './wpcom-block-recurring-payments';
+import wpcomBlockPremiumContent from './wpcom-block-premium-content';
 
 // Debugger.
 const debug = debugFactory( 'wpcom-block-editor:tracking' );
@@ -22,7 +22,7 @@ const debug = debugFactory( 'wpcom-block-editor:tracking' );
 const EVENTS_MAPPING = [
 	wpcomBlockEditorCloseClick(),
 	wpcomInserterInlineSearchTerm(),
-	wpcomBlockRecurringPayments(),
+	wpcomBlockPremiumContent(),
 ];
 
 /**
