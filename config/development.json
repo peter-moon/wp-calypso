@@ -68,6 +68,7 @@
 		"google-my-business": true,
 		"google-drive": true,
 		"gutenboarding/plans-grid": true,
+		"gutenboarding/edge-templates": true,
 		"help": true,
 		"help/courses": true,
 		"home/layout-dev": true,

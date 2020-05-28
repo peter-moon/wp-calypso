@@ -35,4 +35,5 @@ export interface Design {
 	fonts: FontPair;
 	categories: Array< string >;
 	is_premium: boolean;
+	is_edge?: boolean;
 }
